@@ -73,10 +73,10 @@ class LNNode:
         res = self.lncli("walletbalance")
         return res
 
-    def open_channel_to_tank(self, index, amt):
+    def open_channel_to_tank(self, index: int, policy: str) -> str:
         tank = self.warnet.tanks[index]
         [pubkey, host] = tank.lnnode.getURI().split("@")
-        res = self.lncli(f"openchannel --node_key={pubkey} --connect={host} --local_amt={amt}")
+        res = self.lncli(f"openchannel --node_key={pubkey} --connect={host} {policy}")
         return res
 
     def connect_to_tank(self, index):

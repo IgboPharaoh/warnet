@@ -50,12 +50,12 @@ class LNInit(WarnetTestFramework):
         ln_edges = []
         for edge in self.warnet.graph.edges(data=True):
             (src, dst, data) = edge
-            if "channel" in data:
+            if "source-policy" in data:
                 src_node = self.warnet.get_ln_node_from_tank(src)
                 assert src_node is not None
                 assert self.warnet.get_ln_node_from_tank(dst) is not None
                 ln_edges.append(edge)
-                tx = src_node.open_channel_to_tank(dst, data["channel"])["funding_txid"]
+                tx = src_node.open_channel_to_tank(dst, data["source-policy"])["funding_txid"]
                 opening_txs.append(tx)
 
         self.log.info("Waiting for all channel open txs in mempool")

@@ -17,17 +17,18 @@ Example:
 
 ## Adding LN channels to graph
 
-LN channels are represented in the graphml file as edges with an extra data element
-with key `"channel"` and a value in satoshis representing channel capacity. Note
-that this data element is the only difference between LN channels and regular bitcoin
-p2p connections. The graph will be considered a `MultiDiGraph` and contain two different
-kinds of edges.
+LN channels are represented in the graphml file as edges with extra data elements
+that correspond to arguments to the lnd `openchannel` and `updatechanpolicy` RPC
+commands. The keys are with either `"source-policy"` (arguments added to `openchannel`)
+or `"target-policy"` (arguments added to `updatechanpolicy`). Therefore, the key `"source-policy"` is
+required to open a LN channel in warnet, and to identify an edge in the graphml file
+as a LN channel.
 
 Example:
 
 ```
     <edge id="0" source="0" target="1">
-        <data key="channel">100000</data>
+        <data key="source-policy">--local_amt=100000</data>
     </edge>
 ```
 
