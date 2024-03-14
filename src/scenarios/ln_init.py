@@ -46,7 +46,7 @@ class LNInit(WarnetTestFramework):
         # TODO: This might belong in Warnet class as connect_ln_edges()
         #       but that would need to ensure spendable funds first.
         #       For now we consider this scenario "special".
-        opening_txs = []
+        chan_pts = []
         ln_edges = []
         for edge in self.warnet.graph.edges(data=True):
             (src, dst, data) = edge
@@ -55,15 +55,15 @@ class LNInit(WarnetTestFramework):
                 assert src_node is not None
                 assert self.warnet.get_ln_node_from_tank(dst) is not None
                 ln_edges.append(edge)
-                tx = src_node.open_channel_to_tank(dst, data["source-policy"])["funding_txid"]
-                opening_txs.append(tx)
+                chan_pt = src_node.open_channel_to_tank(dst, data["source-policy"])
+                chan_pts.append(chan_pt)
 
         self.log.info("Waiting for all channel open txs in mempool")
         while True:
             all_set = True
             mp = self.nodes[3].getrawmempool()
-            for tx in opening_txs:
-                if tx not in mp:
+            for chan_pt in chan_pts:
+                if chan_pt[:64] not in mp:
                     all_set = False
             if all_set:
                 break
@@ -84,8 +84,14 @@ class LNInit(WarnetTestFramework):
                 break
             sleep(2)
 
-        self.log.info(f"Warnet LN ready with {len(recv_addrs)} nodes and {len(ln_edges)} channels.")
+        self.log.info("Updating channel policies")
+        for i, edge in enumerate(ln_edges):
+            (src, dst, data) = edge
+            if "target-policy" in data:
+                target_node = self.warnet.get_ln_node_from_tank(dst)
+                target_node.update_channel_policy(chan_pts[i], data["target-policy"])
 
+        self.log.info(f"Warnet LN ready with {len(recv_addrs)} nodes and {len(ln_edges)} channels.")
 
 if __name__ == "__main__":
     LNInit().main()

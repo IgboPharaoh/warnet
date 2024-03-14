@@ -73,11 +73,21 @@ class LNNode:
         res = self.lncli("walletbalance")
         return res
 
+    # returns the channel point in the form txid:output_index
     def open_channel_to_tank(self, index: int, policy: str) -> str:
         tank = self.warnet.tanks[index]
         [pubkey, host] = tank.lnnode.getURI().split("@")
-        res = self.lncli(f"openchannel --node_key={pubkey} --connect={host} {policy}")
-        return res
+        txid = self.lncli(f"openchannel --node_key={pubkey} --connect={host} {policy}")["funding_txid"]
+        # Why doesn't LND return the output index as well?
+        # Do they charge by the RPC call or something?!
+        pending = self.lncli("pendingchannels")
+        for chan in pending["pending_open_channels"]:
+            if txid in chan["channel"]["channel_point"]:
+                return chan["channel"]["channel_point"]
+        raise Exception(f"Opened channel with txid {txid} not found in pending channels")
+
+    def update_channel_policy(self, chan_point: str, policy: str) -> str:
+        return self.lncli(f"updatechanpolicy --chan_point={chan_point} {policy}")
 
     def connect_to_tank(self, index):
         tank = self.warnet.tanks[index]

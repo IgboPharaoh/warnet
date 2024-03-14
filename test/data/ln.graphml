@@ -7,6 +7,7 @@
   <key attr.name="ln_cb_image"    attr.type="string" for="node" id="ln_cb_image"/>
   <key attr.name="ln_config"      attr.type="string" for="node" id="ln_config"/>
   <key attr.name="source-policy"  attr.type="string" for="edge" id="source-policy"/>
+  <key attr.name="target-policy"  attr.type="string" for="edge" id="target-policy"/>
   <key attr.name="collect_logs"   attr.type="boolean" for="node" id="collect_logs"/>
   <key attr.name="image"          attr.type="string" for="node" id="image"/>
   <graph edgedefault="directed">
@@ -23,13 +24,13 @@
         <data key="ln">lnd</data>
         <data key="ln_cb_image">pinheadmz/circuitbreaker:278737d</data>
         <data key="collect_logs">true</data>
-        <data key="ln_config">--bitcoin.timelockdelta=20</data>
     </node>
     <node id="2">
         <data key="version">26.0</data>
         <data key="bitcoin_config">-uacomment=w2</data>
         <data key="ln">lnd</data>
         <data key="ln_cb_image">pinheadmz/circuitbreaker:278737d</data>
+        <data key="ln_config">--bitcoin.timelockdelta=33</data>
     </node>
     <node id="3">
         <data key="version">26.0</data>
@@ -42,6 +43,7 @@
     <!-- LN channels -->
     <edge id="5" source="0" target="1">
         <data key="source-policy">--local_amt=100000</data>
+        <data key="target-policy">--base_fee_msat=2200 --fee_rate_ppm=13 --time_lock_delta=20</data>
     </edge>
     <edge id="6" source="1" target="2">
         <data key="source-policy">--local_amt=100000 --push_amt=50000 --base_fee_msat=5500 --fee_rate_ppm=3</data>
