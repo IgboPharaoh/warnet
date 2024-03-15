@@ -12,7 +12,8 @@ LND_CONFIG_BASE = " ".join([
     "--accept-keysend",
     "--bitcoin.active",
     "--bitcoin.regtest",
-    "--bitcoin.node=bitcoind"
+    "--bitcoin.node=bitcoind",
+    "--maxpendingchannels=64"
 ])
 
 class LNNode:
@@ -67,6 +68,8 @@ class LNNode:
 
     def getURI(self):
         res = self.lncli("getinfo")
+        if len(res["uris"]) < 1:
+            return None
         return res["uris"][0]
 
     def get_wallet_balance(self):
