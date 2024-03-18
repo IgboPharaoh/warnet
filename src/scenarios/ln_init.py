@@ -60,7 +60,7 @@ class LNInit(WarnetTestFramework):
             (src, dst, data) = edge
             # Copy the L1 p2p topology (where applicable) to L2
             # so we get a more robust p2p graph for lightning
-            if "source-policy" not in data and self.warnet.tanks[src].lnnode and self.warnet.tanks[dst].lnnode:
+            if "source_policy" not in data and self.warnet.tanks[src].lnnode and self.warnet.tanks[dst].lnnode:
                 self.warnet.tanks[src].lnnode.connect_to_tank(dst)
 
         # Start confirming channel opens in block 300
@@ -68,12 +68,12 @@ class LNInit(WarnetTestFramework):
         chan_opens = []
         for edge in self.warnet.graph.edges(data=True):
             (src, dst, data) = edge
-            if "source-policy" in data:
+            if "source_policy" in data:
                 src_node = self.warnet.get_ln_node_from_tank(src)
                 assert src_node is not None
                 assert self.warnet.get_ln_node_from_tank(dst) is not None
                 self.log.info(f"opening channel {src}->{dst}")
-                chan_pt = src_node.open_channel_to_tank(dst, data["source-policy"])
+                chan_pt = src_node.open_channel_to_tank(dst, data["source_policy"])
                 # We can guarantee deterministic short channel IDs as long as
                 # the change output is greater than the channel funding output,
                 # which will then be output 0
@@ -99,9 +99,9 @@ class LNInit(WarnetTestFramework):
         self.log.info("Updating channel policies")
         for edge, chan_pt in chan_opens:
             (src, dst, data) = edge
-            if "target-policy" in data:
+            if "target_policy" in data:
                 target_node = self.warnet.get_ln_node_from_tank(dst)
-                target_node.update_channel_policy(chan_pt, data["target-policy"])
+                target_node.update_channel_policy(chan_pt, data["target_policy"])
 
         self.log.info(f"Warnet LN ready with {len(recv_addrs)} nodes and {len(chan_opens)} channels.")
 

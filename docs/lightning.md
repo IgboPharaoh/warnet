@@ -19,8 +19,8 @@ Example:
 
 LN channels are represented in the graphml file as edges with extra data elements
 that correspond to arguments to the lnd `openchannel` and `updatechanpolicy` RPC
-commands. The keys are with either `"source-policy"` (arguments added to `openchannel`)
-or `"target-policy"` (arguments added to `updatechanpolicy`). Therefore, the key `"source-policy"` is
+commands. The keys are with either `"source_policy"` (arguments added to `openchannel`)
+or `"target_policy"` (arguments added to `updatechanpolicy`). Therefore, the key `"source_policy"` is
 required to open a LN channel in warnet, and to identify an edge in the graphml file
 as a LN channel.
 
@@ -28,7 +28,7 @@ Example:
 
 ```
     <edge id="0" source="0" target="1">
-        <data key="source-policy">--local_amt=100000</data>
+        <data key="source_policy">--local_amt=100000</data>
     </edge>
 ```
 

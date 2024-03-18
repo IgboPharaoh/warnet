@@ -151,7 +151,7 @@ class Warnet:
             for edge in self.graph.edges(data=True):
                 (src, dst, data) = edge
                 # Ignore LN edges for now
-                if "source-policy" in data:
+                if "source_policy" in data:
                     continue
                 if src == node_id:
                     tank.init_peers.append(int(dst))

@@ -6,8 +6,8 @@
   <key attr.name="ln_image"       attr.type="string" for="node" id="ln_image"/>
   <key attr.name="ln_cb_image"    attr.type="string" for="node" id="ln_cb_image"/>
   <key attr.name="ln_config"      attr.type="string" for="node" id="ln_config"/>
-  <key attr.name="source-policy"  attr.type="string" for="edge" id="source-policy"/>
-  <key attr.name="target-policy"  attr.type="string" for="edge" id="target-policy"/>
+  <key attr.name="source_policy"  attr.type="string" for="edge" id="source_policy"/>
+  <key attr.name="target_policy"  attr.type="string" for="edge" id="target_policy"/>
   <key attr.name="collect_logs"   attr.type="boolean" for="node" id="collect_logs"/>
   <key attr.name="image"          attr.type="string" for="node" id="image"/>
   <graph edgedefault="directed">
@@ -132,71 +132,71 @@
     
     <!-- LN channels -->
     <edge id="0:1" source="0" target="1">
-        <data key="source-policy">--base_fee_msat=1000  --fee_rate_ppm=600  --local_amt=02500000  --push_amt=01250000</data>
-        <data key="target-policy">--base_fee_msat=1000  --fee_rate_ppm=600  --time_lock_delta=80</data>
+        <data key="source_policy">--base_fee_msat=1000  --fee_rate_ppm=600  --local_amt=02500000  --push_amt=01250000</data>
+        <data key="target_policy">--base_fee_msat=1000  --fee_rate_ppm=600  --time_lock_delta=80</data>
     </edge>
 
     <edge id="1:2" source="1" target="2">
-        <data key="source-policy">--base_fee_msat=1000  --fee_rate_ppm=600  --local_amt=00500000  --push_amt=00250000</data>
-        <data key="target-policy">--base_fee_msat=1000  --fee_rate_ppm=600  --time_lock_delta=80</data>
+        <data key="source_policy">--base_fee_msat=1000  --fee_rate_ppm=600  --local_amt=00500000  --push_amt=00250000</data>
+        <data key="target_policy">--base_fee_msat=1000  --fee_rate_ppm=600  --time_lock_delta=80</data>
     </edge>
     <edge id="1:4" source="1" target="4">
-        <data key="source-policy">--base_fee_msat=1000  --fee_rate_ppm=600  --local_amt=200000000 --push_amt=100000000</data>
-        <data key="target-policy">--base_fee_msat=10000 --fee_rate_ppm=725  --time_lock_delta=30</data>
+        <data key="source_policy">--base_fee_msat=1000  --fee_rate_ppm=600  --local_amt=200000000 --push_amt=100000000</data>
+        <data key="target_policy">--base_fee_msat=10000 --fee_rate_ppm=725  --time_lock_delta=30</data>
     </edge>
     <edge id="1:6" source="1" target="6">
-        <data key="source-policy">--base_fee_msat=1000  --fee_rate_ppm=600  --local_amt=100000000 --push_amt=50000000</data>
-        <data key="target-policy">--base_fee_msat=1000  --fee_rate_ppm=1    --time_lock_delta=45</data>
+        <data key="source_policy">--base_fee_msat=1000  --fee_rate_ppm=600  --local_amt=100000000 --push_amt=50000000</data>
+        <data key="target_policy">--base_fee_msat=1000  --fee_rate_ppm=1    --time_lock_delta=45</data>
     </edge>
 
     <edge id="2:3" source="2" target="3">
-        <data key="source-policy">--base_fee_msat=1000  --fee_rate_ppm=600  --local_amt=50000000  --push_amt=02500000</data>
-        <data key="target-policy">--base_fee_msat=1000  --fee_rate_ppm=999  --time_lock_delta=30</data>
+        <data key="source_policy">--base_fee_msat=1000  --fee_rate_ppm=600  --local_amt=50000000  --push_amt=02500000</data>
+        <data key="target_policy">--base_fee_msat=1000  --fee_rate_ppm=999  --time_lock_delta=30</data>
     </edge>
     <edge id="2:5" source="2" target="5">
-        <data key="source-policy">--base_fee_msat=1000  --fee_rate_ppm=600  --local_amt=00500000  --push_amt=00250000</data>
-        <data key="target-policy">--base_fee_msat=1000  --fee_rate_ppm=1    --time_lock_delta=45</data>
+        <data key="source_policy">--base_fee_msat=1000  --fee_rate_ppm=600  --local_amt=00500000  --push_amt=00250000</data>
+        <data key="target_policy">--base_fee_msat=1000  --fee_rate_ppm=1    --time_lock_delta=45</data>
     </edge>
 
     <edge id="3:4" source="3" target="4">
-        <data key="source-policy">--base_fee_msat=1000  --fee_rate_ppm=999  --local_amt=300000000  --push_amt=125000000</data>
-        <data key="target-policy">--base_fee_msat=10000 --fee_rate_ppm=725  --time_lock_delta=30</data>
+        <data key="source_policy">--base_fee_msat=1000  --fee_rate_ppm=999  --local_amt=300000000  --push_amt=125000000</data>
+        <data key="target_policy">--base_fee_msat=10000 --fee_rate_ppm=725  --time_lock_delta=30</data>
     </edge>
     <edge id="3:5" source="3" target="5">
-        <data key="source-policy">--base_fee_msat=1000  --fee_rate_ppm=999  --local_amt=100000000  --push_amt=50000000</data>
-        <data key="target-policy">--base_fee_msat=1000  --fee_rate_ppm=1    --time_lock_delta=45</data>
+        <data key="source_policy">--base_fee_msat=1000  --fee_rate_ppm=999  --local_amt=100000000  --push_amt=50000000</data>
+        <data key="target_policy">--base_fee_msat=1000  --fee_rate_ppm=1    --time_lock_delta=45</data>
     </edge>
 
     <edge id="4:5" source="4" target="5">
-        <data key="source-policy">--base_fee_msat=10000 --fee_rate_ppm=725  --local_amt=500000000  --push_amt=250000000</data>
-        <data key="target-policy">--base_fee_msat=1000  --fee_rate_ppm=1    --time_lock_delta=45</data>
+        <data key="source_policy">--base_fee_msat=10000 --fee_rate_ppm=725  --local_amt=500000000  --push_amt=250000000</data>
+        <data key="target_policy">--base_fee_msat=1000  --fee_rate_ppm=1    --time_lock_delta=45</data>
     </edge>
     <edge id="4:6" source="4" target="6">
-        <data key="source-policy">--base_fee_msat=10000 --fee_rate_ppm=725  --local_amt=100000000  --push_amt=50000000</data>
-        <data key="target-policy">--base_fee_msat=1000  --fee_rate_ppm=1    --time_lock_delta=45</data>
+        <data key="source_policy">--base_fee_msat=10000 --fee_rate_ppm=725  --local_amt=100000000  --push_amt=50000000</data>
+        <data key="target_policy">--base_fee_msat=1000  --fee_rate_ppm=1    --time_lock_delta=45</data>
     </edge>
     <edge id="4:7" source="4" target="7">
-        <data key="source-policy">--base_fee_msat=10000 --fee_rate_ppm=725  --local_amt=50000000   --push_amt=25000000</data>
-        <data key="target-policy">--base_fee_msat=1000  --fee_rate_ppm=1    --time_lock_delta=45</data>
+        <data key="source_policy">--base_fee_msat=10000 --fee_rate_ppm=725  --local_amt=50000000   --push_amt=25000000</data>
+        <data key="target_policy">--base_fee_msat=1000  --fee_rate_ppm=1    --time_lock_delta=45</data>
     </edge>
     <edge id="4:8" source="4" target="8">
-        <data key="source-policy">--base_fee_msat=10000 --fee_rate_ppm=725  --local_amt=50000000   --push_amt=25000000</data>
-        <data key="target-policy">--base_fee_msat=1000  --fee_rate_ppm=1    --time_lock_delta=45</data>
+        <data key="source_policy">--base_fee_msat=10000 --fee_rate_ppm=725  --local_amt=50000000   --push_amt=25000000</data>
+        <data key="target_policy">--base_fee_msat=1000  --fee_rate_ppm=1    --time_lock_delta=45</data>
     </edge>
 
     <edge id="5:9" source="5" target="9">
-        <data key="source-policy">--base_fee_msat=1000  --fee_rate_ppm=1    --local_amt=150000000   --push_amt=75000000</data>
-        <data key="target-policy">--base_fee_msat=0     --fee_rate_ppm=0    --time_lock_delta=80</data>
+        <data key="source_policy">--base_fee_msat=1000  --fee_rate_ppm=1    --local_amt=150000000   --push_amt=75000000</data>
+        <data key="target_policy">--base_fee_msat=0     --fee_rate_ppm=0    --time_lock_delta=80</data>
     </edge>
 
     <edge id="6:9" source="6" target="9">
-        <data key="source-policy">--base_fee_msat=1000  --fee_rate_ppm=1    --local_amt=200000000   --push_amt=100000000</data>
-        <data key="target-policy">--base_fee_msat=0     --fee_rate_ppm=0    --time_lock_delta=80</data>
+        <data key="source_policy">--base_fee_msat=1000  --fee_rate_ppm=1    --local_amt=200000000   --push_amt=100000000</data>
+        <data key="target_policy">--base_fee_msat=0     --fee_rate_ppm=0    --time_lock_delta=80</data>
     </edge>
 
     <edge id="7:8" source="7" target="8">
-        <data key="source-policy">--base_fee_msat=1000  --fee_rate_ppm=1    --local_amt=00400000    --push_amt=00200000</data>
-        <data key="target-policy">--base_fee_msat=1000  --fee_rate_ppm=1    --time_lock_delta=45</data>
+        <data key="source_policy">--base_fee_msat=1000  --fee_rate_ppm=1    --local_amt=00400000    --push_amt=00200000</data>
+        <data key="target_policy">--base_fee_msat=1000  --fee_rate_ppm=1    --time_lock_delta=45</data>
     </edge>
   </graph>
 </graphml>
